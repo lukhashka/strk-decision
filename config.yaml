@@ -1,0 +1,67 @@
+# LM Studio: Developer tab -> Start Server (default http://localhost:1234/v1).
+# `python runner.py --list-models` shows the ids the server offers.
+base_url: http://localhost:1234/v1
+api_key: lm-studio
+
+# Context length you load the model with in LM Studio. A full run is ~2-3k tokens,
+# so 4096 is enough and keeps the KV cache small (matters on 8 GB VRAM).
+ctx_limit: 4096
+temperature: 0.7
+max_tokens: 400
+n_seeds: 5            # runs per (scenario x condition cell); use 20+ for the final paper
+
+# Only one model fits in VRAM at a time, so the runner goes through models one by one.
+# id: exact model id from `python runner.py --list-models` (or use `match: <substring>` instead).
+# no_think: append /no_think (Qwen3 family) so hidden reasoning does not eat the context.
+# group: used in the paper to separate standard instruct models from the uncensored/abliterated ones.
+models:
+  llama31_8b:
+    id: "meta-llama-3.1-8b-instruct"
+    no_think: false
+    group: standard
+  llama31_8b_abliterated:
+    id: "meta-llama-3.1-8b-instruct-abliterated"
+    no_think: false
+    group: uncensored
+  qwen3_8b:
+    id: "qwen/qwen3-8b"
+    no_think: true
+    group: standard
+  qwen35_9b_uncensored:
+    id: "unsec"
+    no_think: true
+    group: uncensored
+  qwen3_4b:
+    id: "qwen3-4b"
+    no_think: true
+    group: standard
+  gemma3_4b:
+    id: "gemma-3-4b-it"
+    no_think: false
+    group: standard
+  mistral_7b_v03:
+    id: "mistral-7b-instruct-v0.3"
+    no_think: false
+    group: standard
+  ministral_8b:
+    id: "ministral-8b-instruct-2410"
+    no_think: false
+    group: standard
+  ministral3_3b:
+    id: "ministral-3b"
+    no_think: false
+    group: standard
+  phi4_mini:
+    id: "phi-4-mini-instruct"
+    no_think: false
+    group: standard
+  granite33_8b:
+    id: "granite-3.3-8b-instruct"
+    no_think: false
+    group: standard
+
+# Judge for judge.py (rubric flags). Run it AFTER the runner finishes, so it can use VRAM alone.
+judge:
+  id: "qwen/qwen3-8b"
+  no_think: true
+  max_tokens: 500

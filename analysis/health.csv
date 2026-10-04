@@ -1,0 +1,3 @@
+model,variant,runs,unparsed,ctx_overflow,truncated,retries_per_run,bare_replies_per_run,max_prompt_tokens
+llama31_8b,neutral,150,0.0,0.0,0.0,0.25333333333333335,0.3,1747
+llama31_8b_abliterated,neutral,150,0.0,0.0,0.0,0.0,0.0,1534
