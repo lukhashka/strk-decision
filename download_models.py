@@ -2,11 +2,13 @@
 
     python download_models.py            # download everything missing
     python download_models.py --dry-run  # only show the plan
+    python download_models.py --hashes   # sha256 of every .gguf in the models folder (for the paper appendix)
 
 Layout follows LM Studio: <models dir>/<publisher>/<repo>/<file>.gguf, so the models show up in LM Studio
 without any import step. Files that already exist with the right size are skipped; partial downloads resume.
 """
 import argparse
+import hashlib
 import os
 import shutil
 from concurrent.futures import ThreadPoolExecutor
@@ -56,11 +58,25 @@ def fetch(item):
     return f"done  {fname} ({size / 1e9:.2f} GB)"
 
 
+def hashes():
+    """sha256 of every GGUF file, so the paper can name the exact weights (a re-uploaded GGUF can differ)."""
+    for f in sorted(MODELS_DIR.rglob("*.gguf")):
+        h = hashlib.sha256()
+        with f.open("rb") as fh:
+            for block in iter(lambda: fh.read(1 << 24), b""):
+                h.update(block)
+        print(f"{h.hexdigest()}  {f.relative_to(MODELS_DIR).as_posix()}", flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--hashes", action="store_true", help="print sha256 of the local GGUF files and exit")
     ap.add_argument("--workers", type=int, default=3, help="parallel files")
     a = ap.parse_args()
+    if a.hashes:
+        hashes()
+        return
 
     items = plan()
     todo = [i for i in items if not (i[3].exists() and i[3].stat().st_size == i[2])]

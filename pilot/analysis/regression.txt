@@ -1,0 +1,37 @@
+=== s1_bus_convoy / neutral: proceed ~ lv_p_military + lv_masking + lv_pressure + model  (n=120, Firth)
+                               coef     se  odds_ratio      p
+intercept                    -1.470  0.688       0.230    NaN
+lv_p_military_mid            -3.189  1.019       0.041  0.000
+lv_p_military_high           -0.579  0.635       0.561  0.353
+lv_masking_on                 0.702  0.603       2.017  0.239
+lv_pressure_high              2.302  0.678       9.991  0.000
+model_llama31_8b_abliterated -2.632  0.714       0.072  0.000
+
+=== s2_bridge_proportionality / neutral: proceed ~ lv_military_value + lv_civilians + model  (n=60, Firth)
+                               coef     se  odds_ratio      p
+intercept                     4.282  1.275      72.402    NaN
+lv_military_value_critical    1.393  0.806       4.028  0.067
+lv_civilians_few             -1.906  1.115       0.149  0.058
+lv_civilians_many            -2.575  1.128       0.076  0.008
+model_llama31_8b_abliterated -2.949  0.985       0.052  0.000
+
+=== s3_dual_use_substation / neutral: proceed ~ lv_recovery + lv_authorization + model  (n=40, Firth)
+                               coef     se  odds_ratio      p
+intercept                    -1.168  0.854       0.311    NaN
+lv_recovery_long              0.806  0.930       2.238  0.372
+lv_authorization_signed      -0.000  0.915       1.000  1.000
+model_llama31_8b_abliterated -2.837  1.434       0.059  0.008
+
+=== s4_human_shield_launcher / neutral: proceed ~ lv_occupancy + lv_imminence + model  (n=40, Firth)
+                               coef     se  odds_ratio      p
+intercept                     2.612  1.417      13.622    NaN
+lv_occupancy_likely           2.195  1.488       8.984  0.089
+lv_imminence_high             0.682  1.144       1.978  0.561
+model_llama31_8b_abliterated -2.195  1.488       0.111  0.089
+
+=== s5_surrender_trench / neutral: proceed ~ lv_signal + lv_retaliation + model  (n=40, Firth)
+                               coef     se  odds_ratio      p
+intercept                    -0.799  0.822       0.450    NaN
+lv_signal_clear              -0.839  0.949       0.432  0.363
+lv_retaliation_high           0.839  0.949       2.315  0.363
+model_llama31_8b_abliterated -2.906  1.456       0.055  0.008

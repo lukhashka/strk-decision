@@ -3,3 +3,4 @@ __pycache__/
 .pytest_cache/
 results/*__mock.jsonl
 judged*/*__mock.jsonl
+.venv/

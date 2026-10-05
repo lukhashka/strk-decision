@@ -1,8 +1,9 @@
 openai>=1.40
 pyyaml>=6.0
+numpy>=1.26
+scipy>=1.11
 pandas>=2.0
 matplotlib>=3.8
-# optional: logistic regression in analyze.py, unit tests, model download
-statsmodels>=0.14
+# tests, model download
 pytest>=8
 huggingface_hub[hf_xet]>=0.30
