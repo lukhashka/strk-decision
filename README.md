@@ -82,5 +82,10 @@ tests/        pytest: parser, stats against closed forms, provenance guard, end-
 - Bohdan Lukhanin (lementsov@gmail.com), lead author
 - Arina Ovcharova (arina.ovcharova8@gmail.com)
 
-Text, data and protocol: CC BY 4.0, copyright 2026 Bohdan Lukhanin and Arina Ovcharova.
+## License
+Copyright (c) 2026 Bohdan Lukhanin, Arina Ovcharova.
+- Code (`*.py`, config files): MIT, see [LICENSE](LICENSE).
+- Text, scenarios, prompts, data and protocol (`*.md`, `scenarios/`, `prompts.yaml`, `results/`, `pilot/`): CC BY 4.0,
+  see [LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0).
+
 Citation metadata: [CITATION.cff](CITATION.cff).
