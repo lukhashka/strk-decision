@@ -4,6 +4,16 @@ Status: **idea / proposal only.** This is an optional extra metric to think thro
 paper. It is not a decisive step, does not replace the current design (factorial scenarios, judge, H1-H7), and
 needs no new model runs.
 
+## Decision (2026-10-06)
+
+- The formula layer is **not part of the OSF preregistration** (protocol-v2.1, commit 97cb4de) and is not mentioned
+  there. It is an **exploratory** analysis and does not test or replace H1-H9.
+- It will go into the paper under an explicit "Exploratory analysis" heading, with the note that it was not
+  preregistered, and with the legal reading of D(x) kept as a sensitivity range, never as the truth.
+- **Before it touches the final data:** freeze its exact form (terms, non-linearities, parameter ranges) in this
+  file, commit it, and add a dated line to the deviations log in PROTOCOL.md. Do not choose the form after
+  looking at fits to the final data, and do not run it before the confirmatory analysis is finished.
+
 ## 1. Core idea
 
 Define an explicit reference decision function D(x), where x is the vector of scenario factors
