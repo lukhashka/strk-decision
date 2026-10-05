@@ -77,3 +77,10 @@ figures.py    paper figures (pdf + png)
 pilot/        the pilot (n=5, 2 models, pre-v2 design): results, analysis, log; not pooled with the final data
 tests/        pytest: parser, stats against closed forms, provenance guard, end-to-end mock pipeline
 ```
+
+## Authors
+- Bohdan Lukhanin (lementsov@gmail.com), lead author
+- Arina Ovcharova (arina.ovcharova8@gmail.com)
+
+Text, data and protocol: CC BY 4.0, copyright 2026 Bohdan Lukhanin and Arina Ovcharova.
+Citation metadata: [CITATION.cff](CITATION.cff).

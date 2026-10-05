@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite it as below."
+title: "Strike-decision benchmark for small open-weight LLMs"
+authors:
+  - family-names: Lukhanin
+    given-names: Bohdan
+    email: lementsov@gmail.com
+  - family-names: Ovcharova
+    given-names: Arina
+    email: arina.ovcharova8@gmail.com
+license: CC-BY-4.0
+version: protocol-v2
+date-released: 2026-10-06
