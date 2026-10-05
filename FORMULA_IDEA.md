@@ -65,8 +65,9 @@ So the decision is a sequence: `D_t = argmax_a score_t(a | x_t, history)`, with 
 pressure event. Pressure and orders can also be modelled as shifts of the weights (does the model's effective
 `w_civ` drop when the commander pushes?), which is exactly what the H2/H5 questions ask.
 
-Possible scenario extension (optional, new content): a "moving drone" scenario with explicit pre-registered
-alternative target and a mid-flight event, to make REDIRECT a first-class action alongside PROCEED / ABORT.
+Scenario added: `scenarios/s6_drone_midflight.yaml` (event none/ambiguous/children x alternative yes/no x pressure
+low/high = 12 cells). REDIRECT is folded into VERIFY (the existing label already means "delay or use an alternative"),
+so the parser, prompts and analysis are unchanged; the `alternative` factor separates redirect from plain abort.
 
 ## 4. Metrics this would add
 
@@ -90,11 +91,11 @@ alternative target and a mid-flight event, to make REDIRECT a first-class action
 
 - `stats.py`: per-model logit / ordered fit on existing data -> implied weights, drift, monotonicity.
 - `reference.py` (new): D(x) with a parameter grid for sensitivity; distance-to-reference metric.
-- Optional new scenario: moving-drone with REDIRECT action.
+- Done: moving-drone scenario s6 (see section 3).
 - Output as an extra table/figure in the analysis; mention in the paper as an additional lens, behind the main H1-H7 results.
 
 ## 7. Open questions
 
 - Which factor set enters x exactly (reuse scenario factors vs. add vulnerability of civilians, confidence)?
-- Is REDIRECT a separate label in the judge, or folded into ALTERNATIVE?
+- REDIRECT is currently folded into VERIFY; split it into its own label only if the judge shows the distinction matters.
 - Reference-parameter ranges: justified from literature on proportionality, or purely a sensitivity sweep?
