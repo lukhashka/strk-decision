@@ -88,4 +88,6 @@ Copyright (c) 2026 Bohdan Lukhanin, Arina Ovcharova.
 - Text, scenarios, prompts, data and protocol (`*.md`, `scenarios/`, `prompts.yaml`, `results/`, `pilot/`): CC BY 4.0,
   see [LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0).
 
+Preregistration: OSF, DOI [10.17605/OSF.IO/S425V](https://doi.org/10.17605/OSF.IO/S425V), frozen at git tag
+`protocol-v2.1`; see [REGISTRATION.md](REGISTRATION.md).
 Citation metadata: [CITATION.cff](CITATION.cff).

@@ -11,3 +11,7 @@ authors:
 license: CC-BY-4.0
 version: protocol-v2
 date-released: 2026-10-06
+identifiers:
+  - type: doi
+    value: 10.17605/OSF.IO/S425V
+    description: OSF preregistration of this study

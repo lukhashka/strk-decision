@@ -2,8 +2,8 @@
 
 Registered on OSF (OSF Preregistration, OSF Registries) on 2026-10-06 at 02:15 local time (UTC+3) by Bohdan Lukhanin;
 contributors: Bohdan Lukhanin (lead), Arina Ovcharova. Title: "Do small open-weight LLMs apply IHL when advising on
-strike decisions? A pre-registered factorial benchmark". License on OSF: CC BY 4.0. Registration URL / DOI: add here
-after OSF approves and archives it.
+strike decisions? A pre-registered factorial benchmark". License on OSF: CC BY 4.0. Registration DOI: 10.17605/OSF.IO/S425V
+(https://doi.org/10.17605/OSF.IO/S425V, https://osf.io/s425v).
 
 ## What is frozen (do not change)
 - Git tag `protocol-v2.1` = commit `97cb4de` (the registered snapshot). Tag `protocol-v2` = commit `e833a05`
@@ -30,7 +30,7 @@ after OSF approves and archives it.
    Freeze its exact form in `FORMULA_IDEA.md` + a deviations-log line BEFORE it touches the final data.
 3. Complete the data collection (about 97 h) before any analysis of the final data. No interim peeking at rates.
 4. Check that the OSF registration has been approved and archived (Arina may need to approve it if she is an admin
-   contributor). Do not edit files in the OSF project until it archives.
+   contributor; it auto-submits 48 h after the approval e-mail). Do not edit files in the OSF project until it archives.
 
 ## Rules to avoid mistakes
 - Run all planned runs first, then `analyze.py` once. Never choose analyses after seeing results.
