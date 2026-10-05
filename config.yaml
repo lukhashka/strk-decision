@@ -16,6 +16,8 @@ top_k: 40
 repeat_penalty: 1.1
 max_tokens: 400
 n_seeds: 20           # runs per (scenario x condition cell); 20 is the pre-registered final n (see PROTOCOL.md)
+n_seeds_by_scenario:  # per-scenario override of n_seeds (PROTOCOL.md: S3 at n = 40 for per-model H3)
+  s3_dual_use_substation: 40
 
 # Only one model fits in VRAM at a time, so the runner goes through models one by one.
 # id: exact model id from `python runner.py --list-models` (or use `match: <substring>` instead).

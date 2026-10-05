@@ -297,6 +297,7 @@ def main():
     if unknown:
         raise SystemExit(f"unknown model/scenario keys: {unknown}")
     n = a.n or cfg["n_seeds"]
+    n_by_scenario = {} if a.n else cfg.get("n_seeds_by_scenario", {})  # --n overrides everything
     out_dir = Path(a.out)
     out_dir.mkdir(parents=True, exist_ok=True)
     git = git_state()
@@ -311,7 +312,8 @@ def main():
         recs = read_jsonl(path)
         check_compatible(recs, scenarios, prompts, a.system_variant, cfg, path)
         finished = {r["run_id"] for r in recs}
-        jobs = [(sid, lv, seed) for sid, s in scenarios.items() for lv in cells(s) for seed in range(n)
+        jobs = [(sid, lv, seed) for sid, s in scenarios.items() for lv in cells(s)
+                for seed in range(n_by_scenario.get(sid, n))
                 if run_id(mk, sid, lv, seed, a.system_variant) not in finished]
         random.Random(0).shuffle(jobs)  # mix conditions in time so drift cannot line up with a factor
         print(f"[{mk}] {len(jobs)} runs to do ({len(finished)} already done)")

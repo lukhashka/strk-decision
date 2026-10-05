@@ -25,8 +25,8 @@ Specifically: do they apply IHL reasoning **unprompted**, and does it survive ne
   context with `runner.py --load`. Sampler pinned for every model: temperature 0.7, top_p 0.95, top_k 40,
   repeat_penalty 1.1, max 400 tokens per reply, seeds 0..n-1. Each run records the scenario/prompt hashes, sampler,
   quantization, loaded context and code commit (`meta`); a seeded run regenerates token for token.
-- n = 20 seeds per cell for `neutral` and `ihl_aware` (880 runs per model and variant). `neutral_unframed` (H7,
-  exploratory) at n = 20 on a fixed subset of four standard-group models from four different families:
+- n = 20 seeds per cell for `neutral` and `ihl_aware`, except S3 at n = 40 (`n_seeds_by_scenario` in `config.yaml`;
+  960 runs per model and variant). `neutral_unframed` (H7, exploratory) with the same n on a fixed subset of four standard-group models from four different families:
   `llama31_8b`, `qwen3_8b`, `gemma3_4b`, `mistral_7b_v03`. Chosen before any analysis; the uncensored models are
   not included, since H7 is about framing, not about refusal training. H7 is tested pooled over these four models
   only and reported as exploratory.
@@ -105,11 +105,12 @@ normal approximation):
 |---|---|---|---|---|
 | S1 pressure, S1 masking, S6 pressure, S6 alternative | 120 | 16 pts | 22 pts | 5 pts |
 | S5 retaliation, S2 military value | 60 | 24 pts | 32 pts | 7 pts |
-| S3 authorization, S4 occupancy | 40 | 29 pts | 40 pts | 8 pts |
+| S3 authorization (n = 40 per cell) | 80 | 20 pts | 27 pts | 6 pts |
+| S4 occupancy | 40 | 29 pts | 40 pts | 8 pts |
 
-**DECIDE:** if per-model H3 matters for the paper, raise S3 to n = 40 (adds 80 runs = ~20 min per model).
-Compute: 880 runs x ~14 s = ~3.4 h per model and variant; 11 models x 2 variants = ~75 h, plus 4 models x
-`neutral_unframed` = ~14 h (19,360 + 3,520 = 22,880 runs, ~89 h in total).
+S3 is run at n = 40 per cell so that per-model H3 is better powered (decided 2026-10-06, see the deviations log).
+Compute: 960 runs x ~14 s = ~3.7 h per model and variant; 11 models x 2 variants = ~82 h, plus 4 models x
+`neutral_unframed` = ~15 h (21,120 + 3,840 = 24,960 runs, ~97 h in total).
 
 ## Exclusions and data quality
 - Rates are computed over runs whose final DECISION parsed; the unparsed share is reported per model. A model with
@@ -139,3 +140,6 @@ transcripts; do not release any prompt aimed at removing refusals.
 - 2026-10-06 - closed the `neutral_unframed` DECIDE (four-model subset, n = 20) - needed a definite run list before
   registration; made after tag `protocol-v2` and before any analysis of the final data (tag `protocol-v2.1` is the
   registered version). Affects only H7 and the planned runs.
+- 2026-10-06 - closed the S3 DECIDE: S3 at n = 40 per cell (other scenarios n = 20), all variants - per-model H3
+  was underpowered at n = 20; made before any analysis of the final data. Affects planned runs and the S3 row of the
+  sample-size table. Seeds 0..19 of S3 already collected stay valid (run ids are unchanged; the runner resumes).
